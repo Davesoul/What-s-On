@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat with What's On</title>
+    <link rel="stylesheet" href="/static/styles.css">
+    <script>
+      const body = document.getElementsByTagName('body')[0];
+const userInputElement0 = document.getElementById("user-input");
+const userInput0 = userInputElement0.value.trim();
+
+body.addEventListener("keydown", (event) => {
+  if (event.key === "/") {
+    userInputElement0.focus();
+    console.log(userInput0); // Perform the desired action with the trimmed input
+  }
+});
+
+userInputElement0.addEventListener("keydown", (event) => {
+  if (event.key === "Enter") {
+    const userInput0 = userInputElement0.value.trim();
+    console.log(userInput0); // Perform the desired action with the trimmed input
+  }
+});
+</script>
+</head>
+<body>
+    <h1 class="Title">What's On</h1>
+    <div class="chat-container">
+<!--        <div class="chat-header">-->
+<!--            <h1>JARVIS</h1>-->
+<!--        </div>-->
+
+        <div id="chat-box" class="grid-container">
+            <!-- Messages will appear here -->
+        </div>
+
+        <div class="typing-indicator" id="typing-indicator">
+            <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+        </div>
+
+
+    </div>
+
+    <div class="input-container">
+        <input type="text" id="user-input" placeholder="Type a message..." autocomplete="off">
+        <button onclick="sendMessage()" id="send-button">Send</button>
+    </div>
+    <script src="/static/script.js"></script>
+
+
+
+
+
+
+</body>
+
+
+</html>
+
+

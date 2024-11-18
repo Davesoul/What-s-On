@@ -1,0 +1,266 @@
+/* General Reset */
+:root {
+    --primary-color: #1f1f1f;
+    --secondary-color: linear-gradient(45deg, #007aff, #00d4ff);
+    --third-color: #3a3a3c
+
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--primary-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: #f5f6fa;
+    box-sizing: border-box;
+}
+
+::-webkit-scrollbar {
+    background-color: var(--primary-color);
+    width: 10px;
+
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--third-color);
+    border-radius: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: var(--third-color);
+    border-radius: 8px;
+}
+
+.Title {
+    position: absolute;
+    top: 10px;
+    z-index: 2;
+}
+
+.chat-container {
+    position: absolute;
+    top: 50px;
+    width: 100%;
+    max-width: 95%;
+    height: 85%;
+    display: flex;
+    flex-direction: column;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    overflow-y: scroll;
+}
+
+.chat-header {
+    padding: 1rem;
+    text-align: center;
+    background: var(--secondary-color);
+    color: #ffffff;
+    font-weight: bold;
+}
+
+.chat-box {
+    flex-grow: 1;
+    padding: 1rem;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    background-color: var(--primary-color);
+    color: #e4e6eb;
+}
+
+.user-message, .bot-message {
+    max-width: 80%;
+    padding: 1rem;
+    border-radius: 15px;
+    font-size: 1rem;
+    line-height: 1.5;
+    position: relative;
+    animation: fadeIn 0.3s ease-in-out;
+    margin-bottom: 20px;
+}
+
+.user-message {
+    align-self: flex-end;
+    background-color: #007aff;
+    color: white;
+}
+
+.bot-message {
+    align-self: flex-start;
+    background-color: #3a3a3c;
+    color: #f5f6fa;
+    border-bottom-left-radius: 0;
+}
+
+.user-message::after, .grid-item::after {
+    content: attr(data-time);
+    font-size: 0.8rem;
+    color: #b0b3b8;
+    position: absolute;
+    bottom: -20px;
+    right: 5px;
+}
+
+/* Typing Indicator */
+.typing-indicator {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    margin: 1rem 0;
+}
+
+.dot {
+    width: 8px;
+    height: 8px;
+    background-color: #007aff;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 5px;
+    animation: typing 0.6s infinite alternate;
+}
+
+.dot:nth-child(2) { animation-delay: 0.2s; }
+.dot:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes typing {
+    from { opacity: 0; transform: translateY(-5px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Input Area */
+.input-container {
+    position: fixed;
+    bottom: 10px;
+    display: flex;
+    background-color: var(--primary-color);
+    align-items: center;
+    padding: 0.25rem;
+    border-radius: 25px;
+    outline: none;
+    margin-right: 10px;
+    margin-left: 10px;
+    margin-bottom: 20px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+
+
+}
+
+input[type="text"] {
+    width: 100%;
+    flex-grow: 1;
+    padding: 0.55rem;
+    background: none;
+    outline: none;
+    border: none;
+    font-size: 1rem;
+    color: #f5f6fa;
+
+}
+
+input[type="text"]::placeholder {
+    color: #b0b3b8;
+}
+
+button {
+    padding: 0.75rem 1.25rem;
+    background-color: #007aff;
+    color: #ffffff;
+    border: none;
+    outline: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.2s;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+
+
+
+
+
+
+/* Styles for the grid container */
+.grid-container {
+    padding: 1rem;
+    gap: 12px;
+    background-color: var(--primary-color);
+    color: #e4e6eb;
+    display: grid;
+    grid-template-rows: auto;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 0.75fr));
+    padding: 20px;
+
+
+}
+
+/* Style for each grid item */
+
+.grid-item {
+    padding: 20px;
+    border-radius: 12px;
+    overflow: hidden; /* Prevents content overflow */
+    word-wrap: break-word; /* Ensures long text wraps */
+    transition: all 0.3s ease;
+}
+
+
+/* Hover effect for smooth interaction */
+.grid-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+
+
+/* Smooth fade-in animation for new grid items */
+.grid-item {
+    opacity: 0;
+    animation: fadeIn 0.5s forwards;
+
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+
+
+
+
+
+/* Responsive grid for medium screens (2 columns) */
+@media (max-width: 768px) {
+    .grid-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Single column on small screens */
+@media (max-width: 480px) {
+    .grid-container {
+        grid-template-columns: 1fr;
+    }
+}
